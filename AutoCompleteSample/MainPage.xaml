@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:local="clr-namespace:AutoCompleteSample.ViewModel"
+             x:Class="AutoCompleteSample.MainPage">
+
+    <VerticalStackLayout>
+        <editors:SfAutocomplete Placeholder="Enter an employee"
+                                TextMemberPath="Name"
+                                DisplayMemberPath="Name"
+                                ItemsSource="{Binding Employees}"
+                                WidthRequest="280">
+            <editors:SfAutocomplete.BindingContext>
+                <local:EmployeeViewModel/>
+            </editors:SfAutocomplete.BindingContext>
+            <editors:SfAutocomplete.ItemTemplate>
+                <DataTemplate >
+                    <HorizontalStackLayout HeightRequest="50"
+                                           Spacing="10"
+                                           Padding="0,5">
+                        <Image Source="{Binding Image}"
+                               Aspect="AspectFit"/>
+                        <Button Text="{Binding Name}"
+                                WidthRequest="220"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </editors:SfAutocomplete.ItemTemplate>
+        </editors:SfAutocomplete>
+    </VerticalStackLayout>
+</ContentPage>
